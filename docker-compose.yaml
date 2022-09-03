@@ -1,0 +1,86 @@
+version: '3.7'
+
+services:
+  vault:
+    build:
+      context: ./vault
+      dockerfile: Dockerfile
+    container_name: vault
+    volumes:
+      - vault-config:/vault/config
+      - vault-logs:/vault/logs
+      - vault-data:/vault/raft
+    ports:
+      - 8200:8200
+    environment:
+      - VAULT_ADDR=http://127.0.0.1:8200
+    cap_add:
+      - IPC_LOCK
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    image: vault-nginx
+    container_name: server
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - web-root:/var/www/html
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - ./nginx-conf:/etc/nginx/conf.d
+      - dhparam:/etc/ssl/certs
+    environment:
+      - DOMAIN=$DOMAIN
+    networks:
+      - vaultnetwork
+
+  certbot:
+    image: certbot/certbot
+    container_name: certificate-authority
+    volumes:
+      - web-root:/var/www/html
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+    depends_on:
+      - nginx
+    command: certonly --webroot --webroot-path=/var/www/html --email $EMAIL --agree-tos --no-eff-email --dry-run -d $DOMAIN
+    networks:
+      - vaultnetwork
+
+volumes:
+  vault-config:
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/vault/config
+      o: bind
+  vault-raft:
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/vault/raft
+      o: bind
+  vault-logs:
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/vault/logs
+      o: bind
+  web-root:
+  certbot-etc:
+  certbot-var:
+  dhparam:
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/certs/dhparam
+      o: bind
+
+networks:
+  vaultnetwork:
+    driver: bridge
+
