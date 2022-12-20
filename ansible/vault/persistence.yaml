@@ -1,0 +1,57 @@
+- hosts: toma-vault
+  become: true
+  gather_facts: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python
+  tasks:
+    - name: Mount s5persvault block storage volume
+      shell: |
+        mount -o discard,defaults,noatime /dev/disk/by-id/scsi-0DO_Volume_s5persvault /mnt/s5persvault
+        echo '/dev/disk/by-id/scsi-0DO_Volume_s5persvault /mnt/s5persvault ext4 defaults,nofail,discard 0 0' | sudo tee -a /etc/fstab
+
+    - name: Update fstab so volume mounts on reboot
+      shell: | 
+        echo '/dev/disk/by-id/scsi-0DO_Volume_s5persvault /mnt/s5persvault ext4 defaults,nofail,discard 0 0' | sudo tee -a /etc/fstab
+    
+    - file: 
+        path: /mnt/s5persvault/vault
+        state: directory
+        owner: vault
+        mode: u+rw,g-rwx,o-rwx
+        recurse: yes
+
+    - file: 
+        path: /mnt/s5persvault/certs/
+        state: directory
+        owner: nginx
+        mode: u+rw,g-rwx,o-rwx
+        recurse: yes
+
+    - file: 
+        path: /mnt/s5persvault/certs/certbot/etc
+        state: directory
+        owner: nginx
+        mode: u+rw,g-rwx,o-rwx
+        recurse: yes
+
+    - file: 
+        path: /mnt/s5persvault/certs/certbot/var
+        state: directory
+        owner: nginx
+        mode: u+rw,g-rwx,o-rwx
+        recurse: yes
+
+    - file: 
+        path: /mnt/s5persvault/certs/dhparam
+        state: directory
+        owner: nginx
+        mode: u+rw,g-rwx,o-rwx
+        recurse: yes
+
+    - file: 
+        path: /mnt/s5persvault
+        state: directory
+        group: toma
+        mode: u+rwx,g+rwx,o-rwx
+        recurse: yes
+

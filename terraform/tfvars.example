@@ -1,0 +1,28 @@
+token      = "xxx"
+region     = "blr1"
+
+api_ssh_key    = "26659168"
+api_admin      = "sushi"
+api_image      = "74817699"
+api_label      = "swala-m"
+api_size       = "s-2vcpu-4gb"
+api_volume_id  = "39ab6e20-bbbb-11ea-95d3-0a58ac14c00c"
+
+vault_ssh_key    = "26659168"
+vault_admin      = "sushi"
+vault_image      = "74817769"
+vault_label      = "swala-v"
+vault_size       = "s-1vcpu-2gb"
+vault_volume_id  = "824f329a-3945-11eb-9953-0a58ac14c15f"
+
+test_ssh_key    = "26659168"
+test_admin      = "sushi"
+test_image      = "74817769"
+test_label      = "swala-t"
+test_size       = "s-2vcpu-4gb"
+test_volume_id  = "824f329a-3945-11eb-9953-0a58ac14c15f"
+
+cf_email   = "vishalmenon.92@gmail.com"
+cf_key     = "xxx"
+cf_token   = "xxx"
+cf_zone_id = "xxx" 

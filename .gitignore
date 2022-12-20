@@ -1,0 +1,5 @@
+*.env
+*vars.json
+*.tfvars
+*.terraform
+*.vault_pass.txt

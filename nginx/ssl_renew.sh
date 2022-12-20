@@ -2,7 +2,7 @@
 
 cd $HOME/cypherpost/compose/prod
 
-CONFIG="$HOME/cypherpost/infra/nginx/main/nginx-conf"
+CONFIG="$HOME/cypherpost/infra/nginx/nginx-conf"
 
 cp $CONFIG/pre $CONFIG/default.conf && \
 docker restart server

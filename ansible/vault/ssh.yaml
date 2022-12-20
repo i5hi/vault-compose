@@ -1,0 +1,26 @@
+- hosts: toma-vault
+  gather_facts: false
+  vars: 
+    local_home_folder: /home/ishi
+  tasks:
+    - authorized_key:
+        user: toma
+        state: present
+        manage_dir: yes
+        key: "{{ lookup('file', '{{ local_home_folder }}/.ssh/tomavault.pub')}}"
+
+    - lineinfile: dest=/etc/ssh/sshd_config regexp='^#?AuthenticationMethods' line='AuthenticationMethods publickey'
+    - lineinfile: dest=/etc/ssh/sshd_config regexp='^PermitRootLogin' line='PermitRootLogin No'      
+    - lineinfile: dest=/etc/ssh/sshd_config regexp='^#Port' line='Port 22909'      
+  
+    - file: 
+        path: /home/toma
+        state: directory
+        owner: toma
+        mode: u+rwx,g-rwx,o-rwx
+        recurse: yes
+
+    - service:
+        name: sshd
+        state: reloaded
+      # remove /root/.ssh/authorized_keys

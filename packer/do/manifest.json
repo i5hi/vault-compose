@@ -1,0 +1,104 @@
+{
+  "builds": [
+    {
+      "name": "digitalocean",
+      "builder_type": "digitalocean",
+      "build_time": 1617135575,
+      "files": null,
+      "artifact_id": "lon1:81331827",
+      "packer_run_uuid": "dc8fff85-4fd5-af61-bd95-b2720e5b5e15",
+      "custom_data": null
+    },
+    {
+      "name": "digitalocean",
+      "builder_type": "digitalocean",
+      "build_time": 1670094450,
+      "files": null,
+      "artifact_id": "lon1:122152038",
+      "packer_run_uuid": "cfea7563-80ae-f232-0d09-e8a72d69e6f9",
+      "custom_data": null
+    },
+    {
+      "name": "digitalocean",
+      "builder_type": "digitalocean",
+      "build_time": 1670094870,
+      "files": null,
+      "artifact_id": "sgp1:122152055",
+      "packer_run_uuid": "9d4ed25e-4460-3823-60aa-ef05b3f1c6d4",
+      "custom_data": null
+    },
+    {
+      "name": "digitalocean",
+      "builder_type": "digitalocean",
+      "build_time": 1670095518,
+      "files": null,
+      "artifact_id": "sgp1:122152186",
+      "packer_run_uuid": "24ad6cd1-58f5-964e-5555-3deebd35c790",
+      "custom_data": null
+    },
+    {
+      "name": "digitalocean",
+      "builder_type": "digitalocean",
+      "build_time": 1670177733,
+      "files": null,
+      "artifact_id": "sgp1:122217000",
+      "packer_run_uuid": "dda1d7dd-2509-177e-363e-1e5ff22fd8d1",
+      "custom_data": null
+    },
+    {
+      "name": "digitalocean",
+      "builder_type": "digitalocean",
+      "build_time": 1670317403,
+      "files": null,
+      "artifact_id": "sgp1:122340612",
+      "packer_run_uuid": "a462caf3-c2ff-cbbe-5712-e8df57169265",
+      "custom_data": null
+    },
+    {
+      "name": "digitalocean",
+      "builder_type": "digitalocean",
+      "build_time": 1670324996,
+      "files": null,
+      "artifact_id": "sgp1:122342415",
+      "packer_run_uuid": "952c6a0a-9771-0907-75bf-5b7ae3d50828",
+      "custom_data": null
+    },
+    {
+      "name": "digitalocean",
+      "builder_type": "digitalocean",
+      "build_time": 1670347917,
+      "files": null,
+      "artifact_id": "sgp1:122348803",
+      "packer_run_uuid": "4425d02d-0003-c1d6-4da4-02614fd97a26",
+      "custom_data": null
+    },
+    {
+      "name": "digitalocean",
+      "builder_type": "digitalocean",
+      "build_time": 1670352419,
+      "files": null,
+      "artifact_id": "sgp1:122349798",
+      "packer_run_uuid": "5850502e-4e7a-d2c4-fd82-5091342ee818",
+      "custom_data": null
+    },
+    {
+      "name": "digitalocean",
+      "builder_type": "digitalocean",
+      "build_time": 1670357348,
+      "files": null,
+      "artifact_id": "sgp1:122351140",
+      "packer_run_uuid": "e43a36f9-7120-4090-66cd-d1583ed7859e",
+      "custom_data": null
+    },
+    {
+      "name": "digitalocean",
+      "builder_type": "digitalocean",
+      "build_time": 1670422196,
+      "files": null,
+      "artifact_id": "sgp1:122411924",
+      "packer_run_uuid": "1141713e-f03c-fb9f-8488-bf23663261a2",
+      "custom_data": null
+    }
+  ],
+  "last_run_uuid": "1141713e-f03c-fb9f-8488-bf23663261a2"
+}

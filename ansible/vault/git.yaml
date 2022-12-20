@@ -1,0 +1,23 @@
+- hosts: toma-vault
+  become: true
+  gather_facts: false
+  vars_files:
+    - secrets.yml
+  vars:
+    ansible_python_interpreter: /usr/bin/python
+    destination: "/home/toma/vault"
+  tasks:
+    - git:
+        repo: "https://{{gituser|urlencode()}}:{{gitpass|urlencode()}}@github.com/i5hi/vault-compose.git"
+        dest: "{{ destination }}"
+
+    - shell: |
+        git config --global user.email "vishalmenon.92@gmail.com"
+    
+    - file: 
+        path: /home/toma/vault
+        state: directory
+        owner: toma
+        group: maka
+        mode: 0770
+        recurse: yes

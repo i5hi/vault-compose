@@ -1,0 +1,51 @@
+{
+  "variables": {
+    "do_token": ""
+  },
+
+ "builders":[
+  {
+   "type": "digitalocean",
+   "api_token": "{{user `do_token`}}",
+   "image": "debian-10-x64",
+   "region": "sgp1",
+   "size": "s-1vcpu-2gb",
+   "snapshot_name": "tomavault",
+   "ssh_username": "root"
+  }
+ ],
+ "provisioners": [
+  {
+   "type": "file",
+   "source": "./scripts/basics.bash",
+   "destination": "/home/"
+  },
+  {
+    "type": "file",
+    "source": "./scripts/setup.bash",
+    "destination": "/home/"
+  },
+  {
+   "type": "shell",
+   "environment_vars": [
+    "ADMIN_USER=toma",
+    "OS=debian"
+  ],
+   "scripts": [
+       "./scripts/basics.bash",
+       "./scripts/setup.bash"
+   ]
+  }
+ ],
+ "post-processors": [
+  [
+    {
+      "output": "manifest.json",
+      "strip_path": true,
+      "type": "manifest"
+    }
+  ]
+]
+}
+
+
